@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({
 
 app.use('/views', express.static('views'));
 
-
 app.use('/', mainRouter);
 
 // app.get('/:name', function (req, res) {
@@ -34,9 +33,9 @@ app.use('/', mainRouter);
 //   console.log("Pokecard online...")
 // })
 
-mongoose.connect('mongodb://localhost:27017/pokeCards', (err, database) => {
+mongoose.connect('mongodb://localhost:27017/pokeCards', (err) => {
   if (err) return console.log(err)
-  app.listen(3000, () => {
+  app.listen(process.env.PORT || 3000, () => {
     console.log('PokeCards online...')
   })
 })
